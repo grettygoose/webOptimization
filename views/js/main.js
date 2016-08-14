@@ -461,10 +461,6 @@ var resizePizzas = function(size) {
     // Changed querySelectorAll to getElementsByClassName
     var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
 
-    // Source: http://www.w3schools.com/js/js_performance.asp
-
-
-
     // Slider will change the pizza view size.
       switch(size) {
          case "1":
@@ -533,19 +529,18 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // Moves the sliding background pizzas based on scroll position
 
 function updatePositions() {
-  window.frame++;
+  frame++;
   window.performance.mark("mark_start_frame");
 
 
   // items = document.getElementsByClassName('mover');
   var top = (document.body.scrollTop / 1250); // If this is made global, moving pizza breaks
-  var cachedLength = window.items.length;
+  var cachedLength = items.length;
+  var phase;
 
-  //  for (var i = 0; i < cachedLength; i++) {
-  //    var phase = Math.sin((top) + (i % 5));
-  //    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-  //  }
-   var phase;
+   // Instead of having the for-loop doing constant recalculations for 5 values
+   // the for-loop can access it from the constArray.
+   // Source: https://discussions.udacity.com/t/project-4-how-do-i-optimize-the-background-pizzas-for-loop/36302/8
    var constArray = [];
 
    for (var i = 0; i < 5; i ++){
@@ -553,11 +548,10 @@ function updatePositions() {
    }
 
 
-
    // Repositioned pizzas
    for (var i = 0; i < cachedLength; i++){
      phase = constArray[i % 5];
-     window.items[i].style.transform = 'translateX(' + (500 * phase) + 'px)';
+     items[i].style.transform = 'translateX(' + (100 * phase) + 'px)';
    }
 
 
@@ -569,9 +563,7 @@ function updatePositions() {
   //   constArray.push(Math.sin( (top) + i ));
   // }
   //
-  // // Instead of having the for-loop doing constant recalculations for 5 values
-  // // the for-loop can access it from the constArray.
-  // // Source: https://discussions.udacity.com/t/project-4-how-do-i-optimize-the-background-pizzas-for-loop/36302/8
+
   // var cachedLength = items.length;
   // for (var i = 0; i < cachedLength; i++) {
   //   var phase = constArray[i % 5];
@@ -602,15 +594,15 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
-    elem.style.left = (i % cols) * s + 'pxs';
+    elem.style.left = (i % cols) * s + 'px';
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
 
     // Changed document.querySelector to document.getElementById
     document.getElementById("movingPizzas1").appendChild(elem);
   }
 
-  // Move window.items here to stop updatePositions from re-defining items on every scroll event
+  // Move items here to stop updatePositions from re-defining items on every scroll event
   //Source: https://discussions.udacity.com/t/cant-reach-the-60-fps-and-pageinsights-goal/183210/8?u=david_31931020565290
-  window.items = document.getElementsByClassName('mover');
+  items = document.getElementsByClassName('mover');
   updatePositions();
 });
