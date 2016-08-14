@@ -19,6 +19,7 @@ cameron *at* udacity *dot* com
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
 var items;
+
 var pizzaIngredients = {};
 pizzaIngredients.meats = [
   "Pepperoni",
@@ -532,30 +533,31 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // Moves the sliding background pizzas based on scroll position
 
 function updatePositions() {
-  frame++;
+  window.frame++;
   window.performance.mark("mark_start_frame");
 
 
   // items = document.getElementsByClassName('mover');
   var top = (document.body.scrollTop / 1250); // If this is made global, moving pizza breaks
-  var cachedLength = items.length;
+  var cachedLength = window.items.length;
 
   //  for (var i = 0; i < cachedLength; i++) {
   //    var phase = Math.sin((top) + (i % 5));
   //    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   //  }
-
+   var phase;
    var constArray = [];
+
    for (var i = 0; i < 5; i ++){
      constArray.push(Math.sin(top + i));
    }
 
-   var phase;
+
 
    // Repositioned pizzas
    for (var i = 0; i < cachedLength; i++){
      phase = constArray[i % 5];
-     items[i].style.transform = 'translateX(' + (300 * phase) + 'px)';
+     window.items[i].style.transform = 'translateX(' + (500 * phase) + 'px)';
    }
 
 
@@ -609,6 +611,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Move window.items here to stop updatePositions from re-defining items on every scroll event
   //Source: https://discussions.udacity.com/t/cant-reach-the-60-fps-and-pageinsights-goal/183210/8?u=david_31931020565290
-  items = document.getElementsByClassName('mover');
+  window.items = document.getElementsByClassName('mover');
   updatePositions();
 });
