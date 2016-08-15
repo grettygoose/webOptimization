@@ -459,9 +459,11 @@ var resizePizzas = function(size) {
 // Source: https://discussions.udacity.com/t/optimizing-the-updatepositions-function/2834/5?u=david_31931020565290
 
   // Iterates through pizza elements on the page and changes their widths
+var newWidth;
   function changePizzaSizes(size) {
     // Changed querySelectorAll to getElementsByClassName
     var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
+
 
     // Slider will change the pizza view size.
       switch(size) {
@@ -580,8 +582,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Calculate cols and rows based on the browser window
   // Source: https://github.com/uncleoptimus/udacityP4/blob/gh-pages/views/js/main.js
-  cols = Math.ceil(window.innerWidth / (256 - 73.33));
-  rows = Math.ceil(window.innerHeight / 256);
+  cols = Math.ceil(window.innerWidth / (s - 73.33));
+  rows = Math.ceil(window.innerHeight / s);
   totalPizzas = cols * rows;
 
   for (var i = 0; i < totalPizzas; i++) {
