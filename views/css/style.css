@@ -35,6 +35,11 @@ form {
   position: fixed;
   width: 256px;
   z-index: -1;
+
+  /*backface-visibility info*/
+  /*https://developer.mozilla.org/en-US/docs/Web/CSS/backface-visibility*/
+  backface-visibility: hidden; 
+
 }
 
 .randomPizzaContainer {
