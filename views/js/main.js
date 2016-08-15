@@ -476,9 +476,6 @@ var resizePizzas = function(size) {
            console.log("bug in sizeSwitcher");
        }
 
-       // Changed querySelectorAll to getElementsByClassName
-       // var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
-       var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
 
        for (var i = 0; i < randomPizzas.length; i++) {
          randomPizzas[i].style.width = newWidth + '%';
@@ -549,9 +546,9 @@ function updatePositions() {
 
 
    // Repositioned pizzas
-   for (var i = 0; i < cachedLength; i++){
-     phase = constArray[i % 5];
-     items[i].style.transform = 'translateX(' + (100 * phase) + 'px)';
+   for (var r = 0; r < cachedLength; r++){
+     phase = constArray[r % 5];
+     items[r].style.transform = 'translateX(' + (100 * phase) + 'px)';
    }
 
 
