@@ -2,7 +2,7 @@
 
 To run this file, visit https://github.com/daampofo/daampofo.github.io and Clone/Download the repository.
 
-PageInsights has calculated a score of **94** for Mobile and **95** for Desktop.
+PageSpeed Insights has calculated a score of **94** for Mobile and **95** for Desktop.
 
 ## Part 1: Optimizing PageSpeed Insight score for index.html
 
