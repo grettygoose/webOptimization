@@ -37,6 +37,7 @@ PageSpeed Insights has calculated a score of **94** for Mobile and **95** for De
 - Declared `var movingPizzas` outside for-loop as var movingPizzas = document.getElementById('movingPizzas1');
    - /** Inside the for statement / loop – this line*/
    - movingPizzas.appendChild(elem);
+- Created `var newWidth` and placed it above function changePizzaSlices(size)
 
 ## Part 3: Optimizing Pizza slider in main.js
 
