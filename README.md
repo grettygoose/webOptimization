@@ -1,6 +1,6 @@
 # Website Performance Optimization Project
 
-To run this file, visit https://github.com/dvampofo/webOptimization and Clone/Download the repository.
+To run this file, visit https://github.com/dvampofo/webOptimization and Clone/Download the repository. To see a live demo, visit https://dvampofo.github.io/webOptimization/
 
 PageSpeed Insights has calculated a score of **94** for Mobile and **95** for Desktop.
 
